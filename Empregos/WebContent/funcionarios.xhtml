@@ -1,0 +1,52 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/layout.xhtml"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+
+
+	<ui:define name="main">
+		<section class="section-1">
+			<h:form>
+				<div class="container text-center">
+					<div class="row">
+						<div class="col-md-4">
+							<div class="panel text-left pt-4">
+								<h2>Em busca de novas oportunidades</h2>
+							</div>
+
+							<h:commandButton value="Cadastra-se" type="submit"
+								class="btn btn-primary"
+								action="cadastrofuncionario.xhtml?faces-redirect=true" />
+								<h:commandButton value="Login" type="submit"
+								class="btn btn-primary"
+								action="loginfuncionario.xhtml?faces-redirect=true" />
+
+						</div>
+					</div>
+
+					<div class="button col-md-12 col-sm-12 text-right"></div>
+				</div>
+			</h:form>
+		</section>
+		<section class="section-2 funcionario">
+
+			<div class="container text-center">
+				<div class="row">
+
+					<div class="col-md-12 pt-5">
+						<div class="pray"></div>
+					</div>
+					<div class="col-md-12">
+						<div class="panel text-center pt-4">
+							<h1>
+								É um imenso prazer te ajudar <br /> a conseguir trabalho
+							</h1>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</ui:define>
+</ui:composition>

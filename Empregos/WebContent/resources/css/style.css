@@ -1,0 +1,72 @@
+/* fontes*/
+@import url('https://fonts.googleapis.com/css?family=Nunito+Sans&display=swap');
+
+header,
+section {
+    overflow: hidden;
+}
+
+h1 {
+    color: #ffffff;
+}
+h2{
+	color: #ffffff;
+}
+#emailHelp a {
+	color: #1c760a;
+}
+
+body {
+    background: #BED0EB;
+    
+}
+
+section {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background: #C19B66;
+    
+}
+
+.section-1{
+	  background: #BED0EB;
+	  margin-bottom: 12%;
+}
+.section-2{
+	  background: #ffffff;
+	  padding-bottom: 10%;
+	  
+}
+.section-2 h2{
+	  color: #000000;
+	  
+}
+.section-3{
+	padding-bottom: 10%;
+}
+
+.btn {
+    background: #88BA52;
+    color: #ffffff;
+    border: 0px;
+    margin-bottom: 10px;
+    margin: 2px;
+}
+
+/*Funcionario*/
+.funcionario h1{
+	color: #000000;
+}
+/*Footer*/
+
+footer {
+    background: #ffffff;
+    overflow: hidden;
+    padding: 5vmin 12vmin;
+}
+
+footer p>span {
+    color: #C19B66;
+}
