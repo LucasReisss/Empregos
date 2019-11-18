@@ -1,0 +1,78 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/layout.xhtml"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+	<ui:define name="main">
+
+		<div class="container text-center">
+			<div class="row">
+				<div class="col-md-12 col-sm-12">
+					<h1>Cadastro</h1>
+				</div>
+			</div>
+		</div>
+
+		<main>
+		<section class="section container col-md-3">
+			<div class="row">
+				<div class="col-sm-12">
+					<h:form>
+						<div class="form-group">
+							<h:outputLabel value="Nome" />
+							<h:inputText class="form-control" pt:placeholder="Nome"
+								value="#{cadastroController.usuario.nome}" />
+						</div>
+						<div class="form-group">
+							<h:outputLabel value="sobrenome" />
+							<h:inputText class="form-control" pt:placeholder="Sobrenome"
+								value="#{cadastroController.usuario.sobrenome}" />
+						</div>
+						<div class="form-group">
+							<h:outputLabel value="Email" />
+							<h:inputText class="form-control" pt:placeholder="Email"
+								value="#{cadastroController.usuario.login}" />
+						</div>
+						<div class="form-group">
+							<h:outputLabel value="Senha" />
+							<h:inputSecret class="form-control" pt:placeholder="Senha"
+								value="#{cadastroController.usuario.senha}" />
+						</div>
+
+					</h:form>
+				</div>
+			</div>
+
+			<h:panelGrid id="panelBotoes" columns="4">
+				<h:commandButton value="Alterar" type="submit"
+								class="btn btn-light"
+					disabled="#{usuarioController.usuario.id == null}"
+					actionListener="#{usuarioController.alterar()}">
+					<f:ajax render="formPrincipal messages" execute="formPrincipal" />
+				</h:commandButton>
+
+				<h:commandButton value="Excluir" type="submit"
+								class="btn btn-light"
+					disabled="#{usuarioController.usuario.id == null}"
+					actionListener="#{usuarioController.excluir()}">
+					<f:ajax render="@all" execute="@this" />
+				</h:commandButton>
+
+				<h:commandButton value="Limpar" type="submit"
+								class="btn btn-light"
+					action="#{usuarioController.limpar()}">
+					<f:ajax
+						render="formPrincipal inputNome inputData inputCep checkAtivo"
+						execute="@this" resetValues="true" />
+				</h:commandButton>
+			</h:panelGrid>
+
+		</section>
+		</main>
+
+	</ui:define>
+
+
+</ui:composition>

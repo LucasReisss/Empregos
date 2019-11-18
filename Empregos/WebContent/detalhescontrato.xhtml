@@ -1,0 +1,78 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/layout.xhtml"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+	<ui:define name="main">
+
+		<div class="container text-center">
+			<div class="row">
+				<div class="col-md-12 col-sm-12">
+					<h1>Mensagem</h1>
+				</div>
+			</div>
+		</div>
+		<h:form id="formPrincipal">
+			<h:messages style="color:green" />
+			<main>
+			<div class="container">
+				<div class="navbar navbar-inverse">
+					<div class="navbar-brand" style="width: 100%; text-align: center;">Detalhe
+						da Venda</div>
+				</div>
+				<section class="section container col-md-3">
+					<div class="row">
+						<div class="col-xs-12 col-xs-updated">
+							<h:form styleClass="form-horizontal">
+								<h:messages id="messages" style="color:red" globalOnly="false" />
+
+								<div class="mb-3">
+									<h:outputLabel value="Cliente: " styleClass="control-label" />
+									<h:outputText
+										value=" #{detalheContratoController.contrato.usuario.nome}"
+										styleClass="control-label" />
+								</div>
+								<div class="mb-3">
+									<h:outputLabel value="Data da Contratação: "
+										styleClass="control-label" />
+									<h:outputText
+										value=" #{detalheContratoController.contrato.data}"
+										styleClass="control-label">
+										<f:convertDateTime type="localDate" pattern="dd-MM-yyyy" />
+									</h:outputText>
+								</div>
+
+								<hr />
+
+								<div class="mb-3">
+									<h:outputLabel value="Funcionarios Contratados: "
+										styleClass="control-label" />
+									<h:dataTable
+										value="#{detalheContratoController.contrato.listaSeleFuncionario}"
+										var="obj" styleClass="table table-striped table-hover">
+										<h:column>
+											<f:facet name="header">Nome</f:facet>
+											<h:outputLabel value="#{obj.funcionario.nome}" />
+										</h:column>
+
+									</h:dataTable>
+								</div>
+								<div class="mb-3">
+									<h:commandButton value="Voltar"
+										onclick="history.go(-1); return false;"
+										styleClass="col-md-6 mb-3 btn btn-default form-control" />
+								</div>
+							</h:form>
+						</div>
+					</div>
+				</section>
+			</div>
+
+			</main>
+		</h:form>
+	</ui:define>
+
+
+</ui:composition>

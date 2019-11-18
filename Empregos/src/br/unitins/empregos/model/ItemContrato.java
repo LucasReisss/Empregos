@@ -1,9 +1,9 @@
 package br.unitins.empregos.model;
 
-public class SelecionandoFuncionarios {
+public class ItemContrato {
 	private Integer id;
 	private Funcionario funcionario;
-	private Contratos contratos;
+	private Contrato contratos;
 
 	public Integer getId() {
 		return id;
@@ -21,11 +21,11 @@ public class SelecionandoFuncionarios {
 		this.funcionario = funcionario;
 	}
 
-	public Contratos getContratos() {
+	public Contrato getContratos() {
 		return contratos;
 	}
 
-	public void setContratos(Contratos contratos) {
+	public void setContratos(Contrato contratos) {
 		this.contratos = contratos;
 	}
 

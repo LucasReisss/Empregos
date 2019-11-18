@@ -37,5 +37,5 @@ public class CadastroController implements Serializable {
 			e.printStackTrace();
 		}
 	}
-
+	
 }

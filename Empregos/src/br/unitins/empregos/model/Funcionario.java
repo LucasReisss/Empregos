@@ -7,6 +7,7 @@ import javax.validation.constraints.Past;
 public class Funcionario extends Usuario {
 	@Past
 	private LocalDate dataAniversario;
+	private Integer id;
 	private String cpf;
 	private String profissao;
 	private String genero;
@@ -34,6 +35,13 @@ public class Funcionario extends Usuario {
 	public void setGenero(String genero) {
 		this.genero = genero;
 	}
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	
 	
 	
 }

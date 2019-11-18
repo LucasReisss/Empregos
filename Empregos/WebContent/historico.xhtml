@@ -1,0 +1,57 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/layout.xhtml"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+	<ui:define name="main">
+
+		<div class="container text-center">
+			<div class="row">
+				<div class="col-md-12 col-sm-12">
+					<h1>Mensagem</h1>
+				</div>
+			</div>
+		</div>
+		<h:form id="formPrincipal">
+			<h:messages style="color:green" />
+			<main>
+			<section class="section container col-md-3">
+
+				<h:dataTable value="#{historicoContratoController.listaContrato}"
+					var="obj">
+					<h:column>
+						<f:facet name="header">Id</f:facet>
+						<h:outputLabel value="#{obj.id}" />
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">Data</f:facet>
+						<h:outputLabel value="#{obj.data}">
+							<f:convertDateTime type="localDate" pattern="dd-MM-yyyy" />
+						</h:outputLabel>
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">Cliente</f:facet>
+						<h:outputLabel value="#{obj.usuario.nome}" />
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">Ação</f:facet>
+						<h:commandButton value="Detalhes ..."
+							action="#{historicoContratoController.detalhes(obj)}">
+							<f:ajax execute="@this" render="@none" />
+						</h:commandButton>
+					</h:column>
+				</h:dataTable>
+
+			</section>
+
+			</main>
+		</h:form>
+	</ui:define>
+
+
+</ui:composition>

@@ -5,7 +5,6 @@
 	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 
 
-
 	<ui:define name="main">
 		<section class="section-1">
 
@@ -21,12 +20,12 @@
 							<div class="form-group">
 								<h:inputText class="form-control"
 									pt:placeholder="Buscar funcionários"
-									value="#{cadastroController.usuario.nome}" />
+									value="#{contratarController.nome}" />
 							</div>
 							<div class="button col-md-12 col-sm-12 text-right">
 								<h:commandButton value="Buscar" type="submit"
 									class="btn btn-primary"
-									actionListener="#{cadastroController.cadastrar}" />
+									Listeneraction="contrato.xhtml?faces-redirect=true" />
 							</div>
 						</div>
 					</div>
@@ -39,7 +38,10 @@
 				<div class="row">
 
 					<div class="col-md-4 pt-4">
-						<div class="pray"></div>
+						
+							<h:graphicImage library="img" name="img1.png"
+								class="img-thumbnail border-0" />
+						
 					</div>
 					<div class="col-md-8">
 						<div class="panel text-right pt-5">

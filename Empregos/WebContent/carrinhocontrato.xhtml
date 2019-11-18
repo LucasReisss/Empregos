@@ -1,0 +1,45 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	template="/template/layout.xhtml"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+
+
+	<ui:define name="main">
+		<h1>Carrinho</h1>
+
+		<h:form>
+			<h:messages style="color:red" />
+
+			<h:dataTable value="#{carrinhoController.venda.listaItemVenda}"
+				var="obj">
+				<h:column>
+					<f:facet name="header">Nome</f:facet>
+					<h:outputLabel value="#{obj.contrato.nome}" />
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">Valor</f:facet>
+					<h:outputLabel value="#{obj.profissao}" />
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">Ação</f:facet>
+					<h:commandButton value="remover"
+						actionListener="#{carrinhoContratosController.remover(obj.id)}">
+						<f:ajax render="@form" execute="@this" />
+					</h:commandButton>
+				</h:column>
+
+			</h:dataTable>
+			<h:commandButton value="Finalizar Venda"
+				actionListener="#{carrinhoContratosController.finalizar}">
+				<f:ajax execute="@form" render="@form" />
+			</h:commandButton>
+
+		</h:form>
+	</ui:define>
+</ui:composition>

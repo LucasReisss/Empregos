@@ -1,0 +1,59 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/layout.xhtml"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+	<ui:define name="main">
+
+		<div class="container text-center">
+			<div class="row">
+				<div class="col-md-12 col-sm-12">
+					<h1>Mensagem</h1>
+				</div>
+			</div>
+		</div>
+		<h:form id="formPrincipal">
+			<main>
+			<section class="section container col-md-3">
+				<div class="row"></div>
+				<div id="panelPrincipal">
+					<div class="col-sm-12">
+						<h:form>
+							<div class="form-group">
+								<h:outputLabel value="Titulo" />
+								<h:inputText class="form-control" pt:placeholder="titulo"
+									value="#{mensagemController.mensagem.titulo}" />
+							</div>
+							<div class="form-group">
+								<h:outputLabel value="Assunto" />
+								<h:inputTextarea class="form-control" pt:placeholder="assunto"
+									rows="3" value="#{mensagemController.mensagem.assunto}" />
+							</div>
+						</h:form>
+					</div>
+				</div>
+				<h:panelGrid id="panelBotoes" columns="2">
+
+					<h:commandButton value="Incluir" class="btn btn-light"
+						disabled="#{produtoController.produto.id != null}"
+						actionListener="#{mensagemController.incluir}">
+						<f:ajax render="formPrincipal" execute="panelPrincipal"
+							resetValues="true" />
+					</h:commandButton>
+
+					<h:commandButton value="Limpar" class="btn btn-light"
+						actionListener="#{mensagemController.limpar}">
+						<f:ajax render="formPrincipal" execute="@this" />
+					</h:commandButton>
+				</h:panelGrid>
+
+			</section>
+
+			</main>
+		</h:form>
+	</ui:define>
+
+
+</ui:composition>
