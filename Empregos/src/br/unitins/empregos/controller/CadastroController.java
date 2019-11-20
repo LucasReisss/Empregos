@@ -29,11 +29,19 @@ public class CadastroController implements Serializable {
 	public void cadastrar() {
 		UsuarioDAO usuario = new UsuarioDAO();
 		getUsuario().setSenha(Util.hashSHA256(getUsuario().getSenha()));
-		usuario.create(getUsuario());
+		try {
+			usuario.create(getUsuario());
+			Util.addMessageInfo("Cadastrado com sucesso");
+		} catch (SQLException e1) {
+			Util.addMessageError("Erro ao incluir o Usuario no Banco de Dados");
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		try {
 			usuario.getConnection().commit();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}

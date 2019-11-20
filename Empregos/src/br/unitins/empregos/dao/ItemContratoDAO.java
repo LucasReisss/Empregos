@@ -24,17 +24,17 @@ public class ItemContratoDAO extends DAO<ItemContrato> {
 	}
 
 	@Override
-	public void create(ItemContrato itemContratos) throws SQLException {
+	public void create(ItemContrato itemContrato) throws SQLException {
 		Connection  conn = getConnection();
 		
 		PreparedStatement stat = conn.prepareStatement(
 				"INSERT INTO " +
-			    "public.itemContratos " +
-			    " (idcontratos, idfuncionario) " +
+			    "public.itemContrato " +
+			    " (idcontrato, idfuncionario) " +
 				"VALUES " +
 			    " (?, ?) ");
-		stat.setInt(1, itemContratos.getContratos().getId());
-		stat.setInt(2, itemContratos.getFuncionario().getId());
+		stat.setInt(1, itemContrato.getContrato().getId());
+		stat.setInt(2, itemContrato.getFuncionario().getId());
 	
 		stat.execute();
 		
@@ -73,8 +73,8 @@ public class ItemContratoDAO extends DAO<ItemContrato> {
 					"  public.itemcontrato c, " +
 					"  public.funcionario f " +
 					"WHERE " +
-					"  v.idfuncionario = p.id AND " +
-					"  v.idcontrato = ? ");
+					"  c.idfuncionario = f.id AND " +
+					"  c.idcontrato = ? ");
 			
 			stat.setInt(1, contrato.getId());
 			ResultSet rs = stat.executeQuery();
@@ -91,7 +91,7 @@ public class ItemContratoDAO extends DAO<ItemContrato> {
 				
 				item.setFuncionario(funcionario);
 				
-				item.setContratos(contrato);
+				item.setContrato(contrato);
 				
 				listaItemContrato.add(item);
 			}

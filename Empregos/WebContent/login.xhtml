@@ -1,5 +1,6 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	template="/template/layout.xhtml"
 	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
@@ -7,6 +8,12 @@
 	<ui:define name="main">
 
 		<div class="container text-center">
+			<div class="alert alert-primary" role="alert">
+				<h:messages id="messages" infoStyle="color:green" 
+					warnStyle="color:orange" 
+					errorStyle="color:red"
+					globalOnly="false"/>
+			</div>
 			<div class="row">
 				<div class="col-md-12 col-sm-12">
 					<h1>
@@ -35,9 +42,8 @@
 						</div>
 						<div class="button col-md-12 col-sm-12 text-right">
 							<h:commandButton value="Entrar" type="submit"
-								class="btn btn-light" action="#{loginController.entrar}" />
+								class="btn btn-light" action="#{loginController.login}" />
 						</div>
-
 					</h:form>
 				</div>
 			</div>

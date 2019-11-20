@@ -39,10 +39,9 @@ public class LoginFuncionarioController implements Serializable {
 					}
 					
 				}
-			}else {
-				System.out.println("O login não é igual");
 			}
 		}
+		 Util.addMessageError("Usuário ou senha Inválido.");
 		 return null;
 
 	}

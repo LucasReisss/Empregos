@@ -36,10 +36,9 @@ public class ContratarController implements Serializable {
 		}
 
 		// obtendo carrinho da sessao
-		List<ItemContrato> carrinhoContrato = (ArrayList<ItemContrato>) Session.getInstance()
-				.getAttribute("carrinhoContrato");
+		List<ItemContrato> carrinhoContrato = (ArrayList<ItemContrato>) Session.getInstance().getAttribute("carrinhoContrato");
 
-		// criando um item de venda para adicionar no carrinho
+		// criando um item de contrato para adicionar no carrinho
 		ItemContrato item = new ItemContrato();
 		item.setFuncionario(funcionario);
 

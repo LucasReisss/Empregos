@@ -187,6 +187,47 @@ public class FuncionarioDAO extends DAO<Funcionario>{
 		return null;
 	}
 	
+	public Funcionario findId(Integer id) {
+		Connection conn = getConnection();
+		if (conn == null) 
+			return null;
+		
+		try {
+			PreparedStatement stat = conn.prepareStatement(
+					"SELECT " +
+					"  id, " +
+					"  nome, " +
+					"  sobrenome, " +
+					"  login, " +
+					"  senha " +				
+					"FROM " +
+					"  public.funcionario " +
+					"WHERE id = ? ");
+			
+			stat.setInt(1, id);
+			
+			ResultSet rs = stat.executeQuery();
+			
+			Funcionario funcionario = null;
+			
+			if(rs.next()) {
+				funcionario = new Funcionario();
+				funcionario.setId(rs.getInt("id"));
+				funcionario.setNome(rs.getString("nome"));
+				funcionario.setSobrenome(rs.getString("sobrenome"));
+				funcionario.setLogin(rs.getString("login"));
+				funcionario.setSenha(rs.getString("senha"));		
+				
+			}
+			
+			return funcionario;
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 	public List<Funcionario> findByNome(String nome) {
 		Connection conn = getConnection();
 		if (conn == null) 

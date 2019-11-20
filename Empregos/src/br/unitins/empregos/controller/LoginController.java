@@ -19,42 +19,43 @@ public class LoginController implements Serializable {
 	private static final long serialVersionUID = -8798700712323623367L;
 
 	private Usuario usuario = new Usuario();
-	
-	public String entrar() {
+
+	public String login() {
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
-		
-		List<Usuario>usuarios = new ArrayList<Usuario>();
-		 usuarios = usuarioDAO.findAll();
-		 
-		 for (Usuario usuarioDaLista : usuarios) {
-			if(getUsuario().getLogin().equals(usuarioDaLista.getLogin())) {
+
+		List<Usuario> usuarios = new ArrayList<Usuario>();
+		usuarios = usuarioDAO.findAll();
+
+		for (Usuario usuarioDaLista : usuarios) {
+			if (getUsuario().getLogin().equals(usuarioDaLista.getLogin())) {
 				getUsuario().setSenha(Util.hashSHA256(getUsuario().getSenha()));
-				if(getUsuario().getSenha().equals(usuarioDaLista.getSenha())){
+				if (getUsuario().getSenha().equals(usuarioDaLista.getSenha())) {
 					System.out.println("igual");
-					
-					if(usuario != null) {
+
+					if (usuario != null) {
 						// armazenando um usuario na sessao
 						Session.getInstance().setAttribute("usuarioLogado", usuario);
 						return "perfilusuario.xhtml?faces-redirect=true";
+
 					}
-					
+
 				}
-			}else {
-				System.out.println("O login não é igual");
-				Util.addMessageError("Usuário ou senha Inválido.");
 			}
 		}
-		 return null;
+		Util.addMessageError("Usuário ou senha Inválido.");
+		return null;
 
 	}
 
 	public Usuario getUsuario() {
-		
+		if(usuario == null)
+			usuario = new Usuario();
+
 		return usuario;
 	}
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
-	
+
 }

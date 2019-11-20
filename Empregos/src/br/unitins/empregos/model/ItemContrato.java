@@ -3,7 +3,7 @@ package br.unitins.empregos.model;
 public class ItemContrato {
 	private Integer id;
 	private Funcionario funcionario;
-	private Contrato contratos;
+	private Contrato contrato;
 
 	public Integer getId() {
 		return id;
@@ -21,12 +21,12 @@ public class ItemContrato {
 		this.funcionario = funcionario;
 	}
 
-	public Contrato getContratos() {
-		return contratos;
+	public Contrato getContrato() {
+		return contrato;
 	}
 
-	public void setContratos(Contrato contratos) {
-		this.contratos = contratos;
+	public void setContrato(Contrato contrato) {
+		this.contrato = contrato;
 	}
 
 }

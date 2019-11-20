@@ -48,7 +48,7 @@ public class ContratoDAO extends DAO<Contrato> {
 		ItemContratoDAO dao = new ItemContratoDAO(conn);
 		for (ItemContrato itemContrato : contrato.getListaSeleFuncionario()) {
 			// informando quem eh o pai da crianca
-			itemContrato.setContratos(contrato);
+			itemContrato.setContrato(contrato);
 			// salvando no banco de dados
 			dao.create(itemContrato);
 		}
@@ -76,7 +76,6 @@ public class ContratoDAO extends DAO<Contrato> {
 			PreparedStatement stat = conn.prepareStatement(
 					"SELECT " +
 					"  c.id, " +
-					"  c.data, " +
 					"  c.data, " +
 					"  u.id as idusuario, " +
 					"  u.nome, "+
@@ -140,7 +139,7 @@ public class ContratoDAO extends DAO<Contrato> {
 					"  public.contrato c, " +
 					"  public.usuario u " +
 					"WHERE " +
-					"  v.idusuario = u.id ");
+					"  c.idusuario = u.id ");
 			ResultSet rs = stat.executeQuery();
 			
 			List<Contrato> listaContrato = new ArrayList<Contrato>();

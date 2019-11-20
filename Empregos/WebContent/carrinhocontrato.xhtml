@@ -9,10 +9,15 @@
 
 
 	<ui:define name="main">
-		<h1>Carrinho</h1>
+
+
+		<h1>Carrinho Contratos</h1>
 
 		<h:form>
-			<h:messages style="color:red" />
+			<div class="alert alert-primary" role="alert">
+				<h:messages id="messages" infoStyle="color:green"
+					warnStyle="color:orange" errorStyle="color:red" globalOnly="false" />
+			</div>
 
 			<h:dataTable value="#{carrinhoController.venda.listaItemVenda}"
 				var="obj">
@@ -22,7 +27,7 @@
 				</h:column>
 
 				<h:column>
-					<f:facet name="header">Valor</f:facet>
+					<f:facet name="header">Profissâo</f:facet>
 					<h:outputLabel value="#{obj.profissao}" />
 				</h:column>
 
@@ -35,7 +40,7 @@
 				</h:column>
 
 			</h:dataTable>
-			<h:commandButton value="Finalizar Venda"
+			<h:commandButton value="Finalizar Contrato"
 				actionListener="#{carrinhoContratosController.finalizar}">
 				<f:ajax execute="@form" render="@form" />
 			</h:commandButton>

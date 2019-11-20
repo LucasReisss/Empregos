@@ -30,7 +30,7 @@ public class UsuarioDAO extends DAO<Usuario>{
 					"  id, " +
 					"  nome, " +
 					"  login, " +
-					"  senha, " +					
+					"  senha " +					
 					"FROM " +
 					"  public.usuario " +
 					"WHERE login = ? AND senha = ? ");
@@ -46,7 +46,7 @@ public class UsuarioDAO extends DAO<Usuario>{
 				usuario = new Usuario();
 				usuario.setId(rs.getInt("id"));
 				usuario.setNome(rs.getString("nome"));
-				usuario.setNome(rs.getString("sobrenome"));
+				usuario.setSobrenome(rs.getString("sobrenome"));
 				usuario.setLogin(rs.getString("login"));
 				usuario.setSenha(rs.getString("senha"));
 			}
@@ -61,7 +61,7 @@ public class UsuarioDAO extends DAO<Usuario>{
 	}
 
 	@Override
-	public void create(Usuario usuario) {	
+	public void create(Usuario usuario) throws SQLException {	
 			
 		try {
 			Connection  conn = getConnection();
@@ -83,6 +83,7 @@ public class UsuarioDAO extends DAO<Usuario>{
 			
 			// obtendo o id gerado pela tabela do banco de dados
 			ResultSet rs = stat.getGeneratedKeys();
+			rs.next();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -106,14 +107,14 @@ public class UsuarioDAO extends DAO<Usuario>{
 		stat.setString(2, usuario.getSobrenome());
 		stat.setString(3, usuario.getLogin());
 		stat.setString(4, usuario.getSenha());
-		stat.setInt(6, usuario.getId());
+		stat.setInt(5, usuario.getId());
 			
 		stat.execute();
 			
 	}
 
 	@Override
-	public boolean delete(int id) {
+	public boolean delete(int id) throws SQLException {
 
 		Connection  conn = getConnection();
 		if (conn == null) 

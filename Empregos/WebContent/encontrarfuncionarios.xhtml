@@ -1,26 +1,87 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	template="/template/layout.xhtml"
 	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 
 
 
 	<ui:define name="main">
+		<div class="alert alert-primary" role="alert">
+			<h:messages style="color: green" />
+		</div>
+		<h:form>
+			<div class="col-md-7 texter-center">
+				<h:commandButton value="Carrinho" class="btn btn-primary"
+					action="carrinhocontrato.xhtml?faces-redirect=true">
+				</h:commandButton>
+			</div>
+		</h:form>
 		<section class="section-1">
 
-			<div class="container text-center">
-				<div class="row">
-					<div class="col-md-4">
-						<div class="panel text-left pt-4">
-							<h1>Encontrar funcionarios</h1>
-							<h3>Em desenvolvimento...</h3>
+			<h:form>
+
+
+
+				<div class="container text-center">
+					<div class="row">
+						<div class="col-md-7">
+							<div class="panel text-left pt-4">
+								<h2>Contratar Funcionario</h2>
+							</div>
+							<h:panelGrid id="panelForm" columns="3">
+
+								<h:outputLabel value="Nome da profissao: " />
+								<h:inputText value="#{contratarController.nome}"
+									class="form-control" placeholder="Nome">
+								</h:inputText>
+
+
+
+								<h:commandButton value="Pesquisar" class="btn btn-light"
+									actionListener="#{vendaProdutoController.pesquisar}">
+									<f:ajax execute="panelForm" render="@all" />
+								</h:commandButton>
+							</h:panelGrid>
+
+
+							<div class="card" style="margin-top: 5%; min-height: 40%;">
+								<div class="table-responsive ">
+									<div class="card-body bg-light">
+										<h:dataTable value="#{contratarController.listaFuncionario}"
+											var="obj" style="width: 100%">
+											<h:column>
+
+												<f:facet name="header">Nome</f:facet>
+												<h:outputLabel value="#{obj.nome}" />
+											</h:column>
+
+											<h:column>
+												<f:facet name="header">Profissao</f:facet>
+												<h:outputLabel value="#{obj.profissao}">
+												</h:outputLabel>
+											</h:column>
+
+											<h:column>
+												<f:facet name="header">Ação</f:facet>
+												<h:commandButton class="btn btn-light"
+													value="Adicionar Carrinho"
+													actionListener="#{contratarController.adicionar(obj.id)}">
+													<f:ajax render="@all" execute="@this" />
+												</h:commandButton>
+
+											</h:column>
+
+										</h:dataTable>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
-					<div class="col-md-4 pt-5">
-					</div>
 				</div>
-			</div>
+			</h:form>
 		</section>
 	</ui:define>
 </ui:composition>
