@@ -33,7 +33,7 @@
 							</div>
 							<h:panelGrid id="panelForm" columns="3">
 
-								<h:outputLabel value="Nome da profissao: " />
+								<h:outputLabel value="Nome: " />
 								<h:inputText value="#{contratarController.nome}"
 									class="form-control" placeholder="Nome">
 								</h:inputText>
@@ -41,7 +41,7 @@
 
 
 								<h:commandButton value="Pesquisar" class="btn btn-light"
-									actionListener="#{vendaProdutoController.pesquisar}">
+									actionListener="#{contratarController.pesquisar }">
 									<f:ajax execute="panelForm" render="@all" />
 								</h:commandButton>
 							</h:panelGrid>

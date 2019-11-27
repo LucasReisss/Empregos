@@ -7,7 +7,6 @@
 	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 
 
-
 	<ui:define name="main">
 
 
@@ -19,16 +18,16 @@
 					warnStyle="color:orange" errorStyle="color:red" globalOnly="false" />
 			</div>
 
-			<h:dataTable value="#{carrinhoController.venda.listaItemVenda}"
+			<h:dataTable value="#{carrinhoContratosController.contratos.listaSeleFuncionario}"
 				var="obj">
 				<h:column>
 					<f:facet name="header">Nome</f:facet>
-					<h:outputLabel value="#{obj.contrato.nome}" />
+					<h:outputLabel value="#{obj.funcionario.nome}" />
 				</h:column>
 
 				<h:column>
 					<f:facet name="header">Profissâo</f:facet>
-					<h:outputLabel value="#{obj.profissao}" />
+					<h:outputLabel value="#{obj.funcionario.profissao}" />
 				</h:column>
 
 				<h:column>

@@ -21,6 +21,7 @@ import br.unitins.empregos.model.Usuario;
 public class CarrinhoContratosController implements Serializable {
 
 	private static final long serialVersionUID = -4845442413205947916L;
+	
 
 	private Contrato contrato;
 
@@ -81,7 +82,7 @@ public class CarrinhoContratosController implements Serializable {
 		} catch (SQLException e) {
 			dao.rollbackConnection();
 			dao.closeConnection();
-			Util.addMessageInfo("Erro ao finalizar os Contrato.");
+			Util.addMessageInfo("Erro ao finalizar o Contrato.");
 			e.printStackTrace();
 		}
 
